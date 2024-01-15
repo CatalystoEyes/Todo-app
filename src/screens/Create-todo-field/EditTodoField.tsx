@@ -1,28 +1,28 @@
 import { useState } from 'react';
-import ITodo from '../../Components/Interface';
+import ITodo from '../../Components/Interface'
 
 interface ITodoProps {
-    todo: ITodo;
-    updateTodo: (id: number, title: string) => void;
+    todo: ITodo
+    updateTodo: (id: number, title: string) => void
 }
 
 const EditTodoField = ({ todo, updateTodo }: ITodoProps) => {
-    const [editing, setEditing] = useState(true);
-    const [title, setTitle] = useState(todo.title);
+    const [editing, setEditing] = useState(true)
+    const [title, setTitle] = useState(todo.title)
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setTitle(event.target.value);
+        setTitle(event.target.value)
     };
 
     const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
         if (event.key === 'Enter') {
-            setEditing(false);
-            updateTodo(todo.id, title);
+            setEditing(false)
+            updateTodo(todo.id, title)
         }
     };
 
     const handleBlur = () => {
-        setEditing(false);
-        updateTodo(todo.id, title);
+        setEditing(false)
+        updateTodo(todo.id, title)
     };
 
     return (
