@@ -4,6 +4,7 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 export interface TodoState {
   title: string;
   isCompleted: boolean;
+  isFavourite: boolean;
   id: number;
 }
 

@@ -2,6 +2,8 @@ import ITodo from "../../Components/interfaces";
 import Check from "./Check";
 import { MdEdit } from "react-icons/md";
 import { BsFillTrash3Fill } from "react-icons/bs";
+import { FaRegHeart } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
 import cn from "classnames";
 import { useState } from "react";
 import EditTodoField from "../Create-todo-field/EditTodoField";
@@ -14,11 +16,16 @@ interface TodoItemProps {
 
 function TodoItem({ todo, changeTodo, removeTodo }: TodoItemProps) {
   const [editing, setEditing] = useState(false);
+  const [favourite, setFavourite] = useState(false);
 
   const editTodo = () => {
     setEditing(true);
   };
 
+  const likeTodo = () => {
+    setFavourite(!favourite);
+  };
+  
   const completeTodo = () => {
     changeTodo(todo.id);
     setTimeout(() => removeTodo(todo.id), 500);
@@ -59,6 +66,15 @@ function TodoItem({ todo, changeTodo, removeTodo }: TodoItemProps) {
         )}
       </span>
       <div>
+      <button onClick={likeTodo}>
+          {!favourite ? <FaRegHeart
+            className="text-green-500 hover:text-red-300"
+            size={23}
+          /> : <FaHeart
+          className="text-red-300 hover:text-red-200"
+          size={23}
+        /> }
+        </button>
         <button onClick={editTodo}>
           <MdEdit
             className="text-green-500 hover:text-green-400 mx-3"

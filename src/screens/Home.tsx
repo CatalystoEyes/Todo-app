@@ -3,6 +3,7 @@ import CreateTodoField from "./Create-todo-field/CreateTodoField";
 import TodoItem from "./Item/TodoItem";
 import { useState } from "react";
 import { todos } from "./data/todos-data";
+import { Link } from "react-router-dom";
 
 function Home() {
   const [todo, setTodo] = useState<ITodo[]>(todos);
@@ -22,9 +23,12 @@ function Home() {
 
   return (
     <div className="text-white w-4/5 mx-auto">
-      <h1 className="text-center text-4xl font-bold mb-10 pt-10 text-white">
-        Todo app
-      </h1>
+      <h2 className="text-center text-3xl mb-3">Todos</h2>
+      <ul className="flex justify-center text-xl mb-3 gap-3">
+          <li className="hover:underline"><Link to={'/'}>Todos</Link></li>
+          <li className="hover:underline"><Link to={'/favourite'}>Favourite</Link></li>
+          <li className="hover:underline"><Link to={'/completed'}>Completed</Link></li>
+      </ul>
       {todo.map((todo) => (
         <TodoItem
           key={todo.id}

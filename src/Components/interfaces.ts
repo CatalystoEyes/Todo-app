@@ -1,5 +1,6 @@
 interface ITodo {
   title: string;
+  isFavourite: boolean;
   isCompleted: boolean;
   id: number;
 }
